@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
+use App\Models\RefUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -50,7 +50,7 @@ class SsoController extends Controller
                     {
                         $userInfo =  json_decode($responseToken->getBody()->getContents(), false);
 
-                        $user = User::updateOrCreate([
+                        $user = RefUser::updateOrCreate([
                             'nama' => $userInfo->name,
                             'nip' => $userInfo->nip,
                             // 'password' => Hash::make($userInfo->nip),

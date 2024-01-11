@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Referensi User')
+@section('title', 'Referensi Menu')
 
 @section('content')
     <div class="table-responsive">
@@ -10,10 +10,11 @@
             <thead>
                 <tr>
                     <th>no</th>
-                    <th>nama</th>
-                    <th>nip</th>
-                    <th>satker</th>
+                    <th>menu</th>
                     <th>role</th>
+                    <th>route</th>
+                    <th>url</th>
+                    <th>urut</th>
                     <th>aksi</th>
                 </tr>
             </thead>
@@ -34,24 +35,24 @@
                         <div class="mb-3" id="errorList"></div>
                         <input type="hidden" name="id" id="id" value="">
                         <div class="mb-3">
-                            <label for="nama" class="form-label">Nama</label>
-                            <input type="text" name="nama" class="form-control" id="nama" value="">
+                            <label for="menu_name" class="form-label">Menu</label>
+                            <input type="text" name="menu_name" class="form-control" id="menu_name" value="">
                         </div>
                         <div class="mb-3">
-                            <label for="nip" class="form-label">NIP</label>
-                            <input type="text" name="nip" class="form-control" id="nip" value="">
+                            <label for="role_name" class="form-label">Role</label>
+                            <input type="text" name="role_name" class="form-control" id="role_name" value="">
                         </div>
                         <div class="mb-3">
-                            <label for="kode_satker" class="form-label">Kode Satker</label>
-                            <input type="text" name="kode_satker" class="form-control" id="kode_satker" value="">
+                            <label for="route_name" class="form-label">Route</label>
+                            <input type="text" name="route_name" class="form-control" id="route_name" value="">
                         </div>
                         <div class="mb-3">
-                            <label for="role" class="form-label">Role</label>
-                            <input type="text" name="role" class="form-control" id="role" value="">
+                            <label for="url_name" class="form-label">URL</label>
+                            <input type="text" name="url_name" class="form-control" id="url_name" value="">
                         </div>
                         <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control" id="password" value="">
+                            <label for="no_urut" class="form-label">Urut</label>
+                            <input type="text" name="no_urut" class="form-control" id="no_urut" value="">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -79,7 +80,7 @@
                 const table = $('.data-table').DataTable({
                     processing: true,
                     serverSide: true,
-                    ajax: "{{ route('user.index') }}",
+                    ajax: "{{ route('ref-menu.index') }}",
                     columns: [{
                             data: null,
                             render: function(data, type, row, meta) {
@@ -87,20 +88,24 @@
                             }
                         },
                         {
-                            data: 'nama',
-                            name: 'nama'
+                            data: 'menu_name',
+                            name: 'menu_name'
                         },
                         {
-                            data: 'nip',
-                            name: 'nip'
+                            data: 'role_name',
+                            name: 'role_name'
                         },
                         {
-                            data: 'kode_satker',
-                            name: 'kode_satker'
+                            data: 'route_name',
+                            name: 'route_name'
                         },
                         {
-                            data: 'role',
-                            name: 'role'
+                            data: 'url_name',
+                            name: 'url_name'
+                        },
+                        {
+                            data: 'no_urut',
+                            name: 'no_urut'
                         },
                         {
                             data: 'action',
@@ -113,13 +118,13 @@
 
                 $('body').on('click', '#detail', function() {
                     const id = $(this).data('id');
-                    $.get("{{ route('user.index') }}" + '/' + id, function(
+                    $.get("{{ route('ref-menu.index') }}" + '/' + id, function(
                         data) {
-                        $('#nama').val(data.nama);
-                        $('#nip').val(data.nip);
-                        $('#kode_satker').val(data.kode_satker);
-                        $('#role').val(data.role);
-                        $('#password').val(data.password);
+                        $('#menu_name').val(data.menu_name);
+                        $('#role_name').val(data.role_name);
+                        $('#route_name').val(data.route_name);
+                        $('#url_name').val(data.url_name);
+                        $('#no_urut').val(data.no_urut);
                         $('#myModalLabel').html('Detail');
                         $('#btnSimpan').hide();
                         $('#errorList').html('');
@@ -136,14 +141,14 @@
 
                 $('body').on('click', '#ubah', function() {
                     const id = $(this).data('id');
-                    $.get("{{ route('user.index') }}" + '/' + id, function(
+                    $.get("{{ route('ref-menu.index') }}" + '/' + id, function(
                         data) {
                         $('#id').val(data.id);
-                        $('#nama').val(data.nama);
-                        $('#nip').val(data.nip);
-                        $('#kode_satker').val(data.kode_satker);
-                        $('#role').val(data.role);
-                        $('#password').val(data.password);
+                        $('#menu_name').val(data.menu_name);
+                        $('#role_name').val(data.role_name);
+                        $('#route_name').val(data.route_name);
+                        $('#url_name').val(data.url_name);
+                        $('#no_urut').val(data.no_urut);
                         $('#myModalLabel').html('Ubah');
                         $('#btnSimpan').html('Ubah');
                         $('#btnSimpan').show();
@@ -156,7 +161,7 @@
                     if (confirm('Are you sure you want to delete?')) {
                         $.ajax({
                             type: "DELETE",
-                            url: "{{ route('user.store') }}" + '/' + id,
+                            url: "{{ route('ref-menu.store') }}" + '/' + id,
                             success: function(data) {
                                 table.draw();
                                 toastr.success('Data has been deleted successfully!');
@@ -174,7 +179,7 @@
                     if ($(this).html() == 'Simpan') {
                         $.ajax({
                             data: $('#myForm').serialize(),
-                            url: "{{ route('user.store') }}",
+                            url: "{{ route('ref-menu.store') }}",
                             type: "POST",
                             dataType: 'json',
                             success: function(data) {
@@ -197,7 +202,7 @@
                     } else {
                         $.ajax({
                             data: $('#myForm').serialize(),
-                            url: "{{ route('user.index') }}" + '/' + id,
+                            url: "{{ route('ref-menu.index') }}" + '/' + id,
                             type: "PUT",
                             dataType: 'json',
                             success: function(data) {

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Referensi User')
+@section('title', 'Referensi Satker')
 
 @section('content')
     <div class="table-responsive">
@@ -10,10 +10,10 @@
             <thead>
                 <tr>
                     <th>no</th>
+                    <th>kode</th>
                     <th>nama</th>
-                    <th>nip</th>
-                    <th>satker</th>
-                    <th>role</th>
+                    <th>nota debet</th>
+                    <th>nota kredit</th>
                     <th>aksi</th>
                 </tr>
             </thead>
@@ -34,24 +34,22 @@
                         <div class="mb-3" id="errorList"></div>
                         <input type="hidden" name="id" id="id" value="">
                         <div class="mb-3">
-                            <label for="nama" class="form-label">Nama</label>
-                            <input type="text" name="nama" class="form-control" id="nama" value="">
-                        </div>
-                        <div class="mb-3">
-                            <label for="nip" class="form-label">NIP</label>
-                            <input type="text" name="nip" class="form-control" id="nip" value="">
-                        </div>
-                        <div class="mb-3">
                             <label for="kode_satker" class="form-label">Kode Satker</label>
                             <input type="text" name="kode_satker" class="form-control" id="kode_satker" value="">
                         </div>
                         <div class="mb-3">
-                            <label for="role" class="form-label">Role</label>
-                            <input type="text" name="role" class="form-control" id="role" value="">
+                            <label for="nama_satker" class="form-label">Nama Satker</label>
+                            <input type="text" name="nama_satker" class="form-control" id="nama_satker" value="">
                         </div>
                         <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control" id="password" value="">
+                            <label for="no_nota_debet" class="form-label">No Nota Debet</label>
+                            <input type="text" name="no_nota_debet" class="form-control" id="no_nota_debet"
+                                value="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="no_nota_kredit" class="form-label">No Nota Kredit</label>
+                            <input type="text" name="no_nota_kredit" class="form-control" id="no_nota_kredit"
+                                value="">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -79,7 +77,7 @@
                 const table = $('.data-table').DataTable({
                     processing: true,
                     serverSide: true,
-                    ajax: "{{ route('user.index') }}",
+                    ajax: "{{ route('ref-satker.index') }}",
                     columns: [{
                             data: null,
                             render: function(data, type, row, meta) {
@@ -87,20 +85,20 @@
                             }
                         },
                         {
-                            data: 'nama',
-                            name: 'nama'
-                        },
-                        {
-                            data: 'nip',
-                            name: 'nip'
-                        },
-                        {
                             data: 'kode_satker',
                             name: 'kode_satker'
                         },
                         {
-                            data: 'role',
-                            name: 'role'
+                            data: 'nama_satker',
+                            name: 'nama_satker'
+                        },
+                        {
+                            data: 'no_nota_debet',
+                            name: 'no_nota_debet'
+                        },
+                        {
+                            data: 'no_nota_kredit',
+                            name: 'no_nota_kredit'
                         },
                         {
                             data: 'action',
@@ -113,13 +111,12 @@
 
                 $('body').on('click', '#detail', function() {
                     const id = $(this).data('id');
-                    $.get("{{ route('user.index') }}" + '/' + id, function(
+                    $.get("{{ route('ref-satker.index') }}" + '/' + id, function(
                         data) {
-                        $('#nama').val(data.nama);
-                        $('#nip').val(data.nip);
                         $('#kode_satker').val(data.kode_satker);
-                        $('#role').val(data.role);
-                        $('#password').val(data.password);
+                        $('#nama_satker').val(data.nama_satker);
+                        $('#no_nota_debet').val(data.no_nota_debet);
+                        $('#no_nota_kredit').val(data.no_nota_kredit);
                         $('#myModalLabel').html('Detail');
                         $('#btnSimpan').hide();
                         $('#errorList').html('');
@@ -136,14 +133,13 @@
 
                 $('body').on('click', '#ubah', function() {
                     const id = $(this).data('id');
-                    $.get("{{ route('user.index') }}" + '/' + id, function(
+                    $.get("{{ route('ref-satker.index') }}" + '/' + id, function(
                         data) {
                         $('#id').val(data.id);
-                        $('#nama').val(data.nama);
-                        $('#nip').val(data.nip);
                         $('#kode_satker').val(data.kode_satker);
-                        $('#role').val(data.role);
-                        $('#password').val(data.password);
+                        $('#nama_satker').val(data.nama_satker);
+                        $('#no_nota_debet').val(data.no_nota_debet);
+                        $('#no_nota_kredit').val(data.no_nota_kredit);
                         $('#myModalLabel').html('Ubah');
                         $('#btnSimpan').html('Ubah');
                         $('#btnSimpan').show();
@@ -156,7 +152,7 @@
                     if (confirm('Are you sure you want to delete?')) {
                         $.ajax({
                             type: "DELETE",
-                            url: "{{ route('user.store') }}" + '/' + id,
+                            url: "{{ route('ref-satker.store') }}" + '/' + id,
                             success: function(data) {
                                 table.draw();
                                 toastr.success('Data has been deleted successfully!');
@@ -174,7 +170,7 @@
                     if ($(this).html() == 'Simpan') {
                         $.ajax({
                             data: $('#myForm').serialize(),
-                            url: "{{ route('user.store') }}",
+                            url: "{{ route('ref-satker.store') }}",
                             type: "POST",
                             dataType: 'json',
                             success: function(data) {
@@ -197,7 +193,7 @@
                     } else {
                         $.ajax({
                             data: $('#myForm').serialize(),
-                            url: "{{ route('user.index') }}" + '/' + id,
+                            url: "{{ route('ref-satker.index') }}" + '/' + id,
                             type: "PUT",
                             dataType: 'json',
                             success: function(data) {

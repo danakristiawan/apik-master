@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
+use App\Models\RefUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +24,7 @@ class RegisterController extends Controller
             'password_confirmation' => 'required|min:3'
         ]);
 
-       $user = User::create([
+       $user = RefUser::create([
             'nama' => $request->nama,
             'nip' => $request->nip,
             'password' => Hash::make($request->password),

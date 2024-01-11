@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Referensi User')
+@section('title', 'Referensi Bank')
 
 @section('content')
     <div class="table-responsive">
@@ -10,10 +10,14 @@
             <thead>
                 <tr>
                     <th>no</th>
+                    <th>kode</th>
+                    <th>nomor</th>
+                    <th>uraian</th>
+                    <th>jenis</th>
                     <th>nama</th>
-                    <th>nip</th>
-                    <th>satker</th>
-                    <th>role</th>
+                    <th>surat</th>
+                    <th>tanggal</th>
+                    <th>status</th>
                     <th>aksi</th>
                 </tr>
             </thead>
@@ -34,24 +38,41 @@
                         <div class="mb-3" id="errorList"></div>
                         <input type="hidden" name="id" id="id" value="">
                         <div class="mb-3">
-                            <label for="nama" class="form-label">Nama</label>
-                            <input type="text" name="nama" class="form-control" id="nama" value="">
-                        </div>
-                        <div class="mb-3">
-                            <label for="nip" class="form-label">NIP</label>
-                            <input type="text" name="nip" class="form-control" id="nip" value="">
-                        </div>
-                        <div class="mb-3">
                             <label for="kode_satker" class="form-label">Kode Satker</label>
                             <input type="text" name="kode_satker" class="form-control" id="kode_satker" value="">
                         </div>
                         <div class="mb-3">
-                            <label for="role" class="form-label">Role</label>
-                            <input type="text" name="role" class="form-control" id="role" value="">
+                            <label for="nomor_rekening" class="form-label">Nomor Rekening</label>
+                            <input type="text" name="nomor_rekening" class="form-control" id="nomor_rekening"
+                                value="">
                         </div>
                         <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control" id="password" value="">
+                            <label for="uraian_rekening" class="form-label">Uraian Rekening</label>
+                            <input type="text" name="uraian_rekening" class="form-control" id="uraian_rekening"
+                                value="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="jenis_rekening" class="form-label">Jenis Rekening</label>
+                            <input type="text" name="jenis_rekening" class="form-control" id="jenis_rekening"
+                                value="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nama_bank" class="form-label">Nama Bank</label>
+                            <input type="text" name="nama_bank" class="form-control" id="nama_bank" value="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="surat_izin" class="form-label">Surat Izin</label>
+                            <input type="text" name="surat_izin" class="form-control" id="surat_izin" value="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="tanggal_surat" class="form-label">Tanggal Surat</label>
+                            <input type="text" name="tanggal_surat" class="form-control" id="tanggal_surat"
+                                value="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="status_rekening" class="form-label">Status Rekening</label>
+                            <input type="text" name="status_rekening" class="form-control" id="status_rekening"
+                                value="">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -79,7 +100,7 @@
                 const table = $('.data-table').DataTable({
                     processing: true,
                     serverSide: true,
-                    ajax: "{{ route('user.index') }}",
+                    ajax: "{{ route('ref-bank.index') }}",
                     columns: [{
                             data: null,
                             render: function(data, type, row, meta) {
@@ -87,20 +108,36 @@
                             }
                         },
                         {
-                            data: 'nama',
-                            name: 'nama'
-                        },
-                        {
-                            data: 'nip',
-                            name: 'nip'
-                        },
-                        {
                             data: 'kode_satker',
                             name: 'kode_satker'
                         },
                         {
-                            data: 'role',
-                            name: 'role'
+                            data: 'nomor_rekening',
+                            name: 'nomor_rekening'
+                        },
+                        {
+                            data: 'uraian_rekening',
+                            name: 'uraian_rekening'
+                        },
+                        {
+                            data: 'jenis_rekening',
+                            name: 'jenis_rekening'
+                        },
+                        {
+                            data: 'nama_bank',
+                            name: 'nama_bank'
+                        },
+                        {
+                            data: 'surat_izin',
+                            name: 'surat_izin'
+                        },
+                        {
+                            data: 'tanggal_surat',
+                            name: 'tanggal_surat'
+                        },
+                        {
+                            data: 'status_rekening',
+                            name: 'status_rekening'
                         },
                         {
                             data: 'action',
@@ -113,13 +150,16 @@
 
                 $('body').on('click', '#detail', function() {
                     const id = $(this).data('id');
-                    $.get("{{ route('user.index') }}" + '/' + id, function(
+                    $.get("{{ route('ref-bank.index') }}" + '/' + id, function(
                         data) {
-                        $('#nama').val(data.nama);
-                        $('#nip').val(data.nip);
                         $('#kode_satker').val(data.kode_satker);
-                        $('#role').val(data.role);
-                        $('#password').val(data.password);
+                        $('#nomor_rekening').val(data.nomor_rekening);
+                        $('#uraian_rekening').val(data.uraian_rekening);
+                        $('#jenis_rekening').val(data.jenis_rekening);
+                        $('#nama_bank').val(data.nama_bank);
+                        $('#surat_izin').val(data.surat_izin);
+                        $('#tanggal_surat').val(data.tanggal_surat);
+                        $('#status_rekening').val(data.status_rekening);
                         $('#myModalLabel').html('Detail');
                         $('#btnSimpan').hide();
                         $('#errorList').html('');
@@ -129,6 +169,7 @@
                 $('body').on('click', '#rekam', function() {
                     $('#myForm').trigger("reset");
                     $('#myModalLabel').html('Rekam');
+                    $('#btnUbah').hide();
                     $('#btnSimpan').html('Simpan');
                     $('#btnSimpan').show();
                     $('#errorList').html('');
@@ -136,14 +177,17 @@
 
                 $('body').on('click', '#ubah', function() {
                     const id = $(this).data('id');
-                    $.get("{{ route('user.index') }}" + '/' + id, function(
+                    $.get("{{ route('ref-bank.index') }}" + '/' + id, function(
                         data) {
                         $('#id').val(data.id);
-                        $('#nama').val(data.nama);
-                        $('#nip').val(data.nip);
                         $('#kode_satker').val(data.kode_satker);
-                        $('#role').val(data.role);
-                        $('#password').val(data.password);
+                        $('#nomor_rekening').val(data.nomor_rekening);
+                        $('#uraian_rekening').val(data.uraian_rekening);
+                        $('#jenis_rekening').val(data.jenis_rekening);
+                        $('#nama_bank').val(data.nama_bank);
+                        $('#surat_izin').val(data.surat_izin);
+                        $('#tanggal_surat').val(data.tanggal_surat);
+                        $('#status_rekening').val(data.status_rekening);
                         $('#myModalLabel').html('Ubah');
                         $('#btnSimpan').html('Ubah');
                         $('#btnSimpan').show();
@@ -156,7 +200,7 @@
                     if (confirm('Are you sure you want to delete?')) {
                         $.ajax({
                             type: "DELETE",
-                            url: "{{ route('user.store') }}" + '/' + id,
+                            url: "{{ route('ref-bank.store') }}" + '/' + id,
                             success: function(data) {
                                 table.draw();
                                 toastr.success('Data has been deleted successfully!');
@@ -174,7 +218,7 @@
                     if ($(this).html() == 'Simpan') {
                         $.ajax({
                             data: $('#myForm').serialize(),
-                            url: "{{ route('user.store') }}",
+                            url: "{{ route('ref-bank.store') }}",
                             type: "POST",
                             dataType: 'json',
                             success: function(data) {
@@ -185,9 +229,9 @@
                             },
                             error: function(data) {
                                 console.log(data.responseJSON.errors);
-                                var data = data.responseJSON.errors;
+                                const err = data.responseJSON.errors;
                                 errorsHtml = '<div class="alert alert-danger"><ul>';
-                                $.each(data, function(key, value) {
+                                $.each(err, function(key, value) {
                                     errorsHtml += '<li>' + value[0] + '</li>';
                                 });
                                 errorsHtml += '</ul></di>';
@@ -197,7 +241,7 @@
                     } else {
                         $.ajax({
                             data: $('#myForm').serialize(),
-                            url: "{{ route('user.index') }}" + '/' + id,
+                            url: "{{ route('ref-bank.index') }}" + '/' + id,
                             type: "PUT",
                             dataType: 'json',
                             success: function(data) {
@@ -208,9 +252,9 @@
                             },
                             error: function(data) {
                                 console.log(data.responseJSON.errors);
-                                const err = data.responseJSON.errors;
+                                var data = data.responseJSON.errors;
                                 errorsHtml = '<div class="alert alert-danger"><ul>';
-                                $.each(err, function(key, value) {
+                                $.each(data, function(key, value) {
                                     errorsHtml += '<li>' + value[0] + '</li>';
                                 });
                                 errorsHtml += '</ul></di>';

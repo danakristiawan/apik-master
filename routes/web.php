@@ -2,17 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -40,8 +29,38 @@ Route::controller(App\Http\Controllers\Auth\SsoController::class)->group(functio
     Route::get('signout', 'signout')->name('signout')->middleware('auth');
 });
 
+// middleware auth
+// user
 Route::get('home', function () {
     return view('home');
 })->name('home')->middleware('auth');
 
-Route::get('chart', 'App\Http\Controllers\ChartController@index')->name('chart');
+// operator
+Route::middleware('can:operator')->group(function () {
+    Route::resource('overview', App\Http\Controllers\OverviewController::class);
+    Route::resource('rekening-koran', App\Http\Controllers\RekeningKoranController::class);
+    Route::resource('jurnal', App\Http\Controllers\JurnalController::class);
+    Route::resource('pelaporan', App\Http\Controllers\PelaporanController::class);
+    Route::resource('pembukuan', App\Http\Controllers\PembukuanController::class);
+});
+
+// supervisor
+Route::middleware('can:supervisor')->group(function () {
+});
+
+// manager
+Route::middleware('can:manager')->group(function () {
+    Route::resource('ref-satker', App\Http\Controllers\RefSatkerController::class);
+    Route::resource('ref-bank', App\Http\Controllers\RefBankController::class);
+    Route::resource('ref-menu', App\Http\Controllers\RefMenuController::class);
+    Route::resource('user', App\Http\Controllers\UserController::class);
+
+});
+
+
+// Route::get('chart', 'App\Http\Controllers\ChartController@index')->name('chart');
+
+// Route::get('overview', function () {
+//     return view('overview');
+// })->name('overview')->middleware('can:operator');
+

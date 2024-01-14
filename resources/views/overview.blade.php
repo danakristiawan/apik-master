@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Rekening Koran</h5>
-                    <h3 class="card-text">346</h3>
+                    <h3 class="card-text">{{ number_format($rekeningKoran, 0, ',', '.') }}</h3>
                     <h6 class="card-subtitle mb-2 text-body-secondary">transaksi diterima</h6>
                 </div>
             </div>
@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Jurnal</h5>
-                    <h3 class="card-text">43</h3>
+                    <h3 class="card-text">{{ number_format($jurnal, 0, ',', '.') }}</h3>
                     <h6 class="card-subtitle mb-2 text-body-secondary">transaksi diproses</h6>
                 </div>
             </div>
@@ -27,7 +27,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Pembukuan</h5>
-                    <h3 class="card-text">56</h3>
+                    <h3 class="card-text">{{ number_format($pembukuan, 0, ',', '.') }}</h3>
                     <h6 class="card-subtitle mb-2 text-body-secondary">transaksi dibukukan</h6>
                 </div>
             </div>
@@ -36,7 +36,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Pelaporan</h5>
-                    <h3 class="card-text">436</h3>
+                    <h3 class="card-text">{{ number_format($pelaporan, 0, ',', '.') }}</h3>
                     <h6 class="card-subtitle mb-2 text-body-secondary">transaksi dilaporkan</h6>
                 </div>
             </div>
@@ -136,7 +136,7 @@
     </div>
 @endsection
 
-@push('js')
+{{-- @push('js')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             $(document).ready(function() {
@@ -206,4 +206,4 @@
             });
         });
     </script>
-@endpush
+@endpush --}}

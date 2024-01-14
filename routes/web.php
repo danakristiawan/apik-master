@@ -50,6 +50,8 @@ Route::middleware('can:supervisor')->group(function () {
 
 // manager
 Route::middleware('can:manager')->group(function () {
+    Route::view('referensi', 'referensi')->name('referensi');
+    Route::view('utilitas', 'utilitas')->name('utilitas');
     Route::resource('ref-satker', App\Http\Controllers\RefSatkerController::class);
     Route::resource('ref-bank', App\Http\Controllers\RefBankController::class);
     Route::resource('ref-menu', App\Http\Controllers\RefMenuController::class);

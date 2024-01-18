@@ -29,7 +29,7 @@ Route::controller(App\Http\Controllers\Auth\SsoController::class)->group(functio
     Route::get('signout', 'signout')->name('signout')->middleware('auth');
 });
 
-// middleware auth
+// auth
 // user
 Route::get('home', function () {
     return view('home');
@@ -37,7 +37,13 @@ Route::get('home', function () {
 
 // operator
 Route::middleware('can:operator')->group(function () {
-    Route::resource('overview', App\Http\Controllers\OverviewController::class);
+    Route::controller(App\Http\Controllers\OverviewController::class)->group(function () {
+        Route::get('overview', 'index')->name('overview.index');
+        Route::get('barchart', 'barChart')->name('overview.barchart');
+        Route::get('piechart', 'pieChart')->name('overview.piechart');
+        Route::get('lelangtable', 'lelangTable')->name('overview.lelangtable');
+        Route::get('piutangtable', 'piutangTable')->name('overview.piutangtable');
+    });
     Route::resource('rekening-koran', App\Http\Controllers\RekeningKoranController::class);
     Route::resource('jurnal', App\Http\Controllers\JurnalController::class);
     Route::resource('pelaporan', App\Http\Controllers\PelaporanController::class);
@@ -58,11 +64,3 @@ Route::middleware('can:manager')->group(function () {
     Route::resource('user', App\Http\Controllers\UserController::class);
 
 });
-
-
-// Route::get('chart', 'App\Http\Controllers\ChartController@index')->name('chart');
-
-// Route::get('overview', function () {
-//     return view('overview');
-// })->name('overview')->middleware('can:operator');
-

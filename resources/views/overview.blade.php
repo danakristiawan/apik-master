@@ -52,83 +52,35 @@
     </div>
     <div class="row mt-4">
         <div class="col-lg-6">
-            <h5 class="card-title mt-4">Pembukuan Lelang</h5>
+            <h5 class="card-title mt-4">Tabel Lelang</h5>
             <div class="table-responsive">
-                <table class="table table-hover">
+                <table class="table table-hover data-table-lelang">
                     <thead>
                         <tr>
-                            <th>Jenis</th>
+                            <th>Nama Transaksi</th>
                             <th>Debet</th>
                             <th>Kredit</th>
                             <th>Saldo</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Uang Jaminan Lelang</td>
-                            <td>345.000.000</td>
-                            <td>245.000.000</td>
-                            <td>100.000.000</td>
-                        </tr>
-                        <tr>
-                            <td>Pelunasan Lelang</td>
-                            <td>123.000.000</td>
-                            <td>53.000.000</td>
-                            <td>70.000.000</td>
-                        </tr>
-                        <tr>
-                            <td>PPh</td>
-                            <td>25.688.000</td>
-                            <td>34.675.000</td>
-                            <td>3.000.000</td>
-                        </tr>
-                        <tr>
-                            <td>PNBP</td>
-                            <td>34.454.000</td>
-                            <td>780.568</td>
-                            <td>433.333</td>
-                        </tr>
-                        <tr>
-                            <td>Wanprestasi</td>
-                            <td>8.454.000</td>
-                            <td>46.568</td>
-                            <td>965.333</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="col-lg-6">
-            <h5 class="card-title mt-4">Pembukuan Piutang</h5>
+            <h5 class="card-title mt-4">Tabel Piutang</h5>
             <div class="table-responsive">
-                <table class="table table-hover">
+                <table class="table table-hover data-table-piutang">
                     <thead>
                         <tr>
-                            <th>Jenis</th>
+                            <th>Nama Transaksi</th>
                             <th>Debet</th>
                             <th>Kredit</th>
                             <th>Saldo</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Angsuran Hutang</td>
-                            <td>11.000.000</td>
-                            <td>3.000.000</td>
-                            <td>4.000.000</td>
-                        </tr>
-                        <tr>
-                            <td>Pelunasan Hutang</td>
-                            <td>13.000.000</td>
-                            <td>4.000.000</td>
-                            <td>23.000.000</td>
-                        </tr>
-                        <tr>
-                            <td>PNBP</td>
-                            <td>35.454.000</td>
-                            <td>1.780.568</td>
-                            <td>34.433.333</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -136,14 +88,14 @@
     </div>
 @endsection
 
-{{-- @push('js')
+@push('js')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             $(document).ready(function() {
 
                 $.ajax({
                     type: "GET",
-                    url: "{{ route('chart') }}",
+                    url: "{{ route('overview.barchart') }}",
                     success: function(response) {
                         const labels = response.data.map(function(e) {
                             return e.bulan
@@ -159,7 +111,7 @@
                             data: {
                                 labels: labels,
                                 datasets: [{
-                                    label: 'Data Transaksi Per Bulan',
+                                    label: 'Jumlah transaksi per bulan',
                                     data: data,
 
                                 }]
@@ -174,7 +126,7 @@
 
                 $.ajax({
                     type: "GET",
-                    url: "{{ route('chart') }}",
+                    url: "{{ route('overview.piechart') }}",
                     success: function(response) {
                         const labels = response.data.map(function(e) {
                             return e.bulan
@@ -188,9 +140,9 @@
                         const config = {
                             type: 'pie',
                             data: {
-                                labels: labels,
+                                labels: ['lelang', 'piutang'],
                                 datasets: [{
-                                    label: 'Data Transaksi Per Bulan',
+                                    label: 'Jumlah transaksi per tahun',
                                     data: data,
 
                                 }]
@@ -203,7 +155,59 @@
                     }
                 });
 
+                const lelangTable = $('.data-table-lelang').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    paging: false,
+                    searching: false,
+                    info: false,
+                    ajax: "{{ route('overview.lelangtable') }}",
+                    columns: [{
+                            data: 'nama_transaksi',
+                            name: 'nama_transaksi'
+                        },
+                        {
+                            data: 'debet.toLocaleString()',
+                            name: 'debet'
+                        },
+                        {
+                            data: 'kredit.toLocaleString()',
+                            name: 'kredit'
+                        },
+                        {
+                            data: 'saldo.toLocaleString()',
+                            name: 'saldo'
+                        },
+                    ]
+                });
+
+                const piutangTable = $('.data-table-piutang').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    paging: false,
+                    searching: false,
+                    info: false,
+                    ajax: "{{ route('overview.piutangtable') }}",
+                    columns: [{
+                            data: 'nama_transaksi',
+                            name: 'nama_transaksi'
+                        },
+                        {
+                            data: 'debet.toLocaleString()',
+                            name: 'debet'
+                        },
+                        {
+                            data: 'kredit.toLocaleString()',
+                            name: 'kredit'
+                        },
+                        {
+                            data: 'saldo.toLocaleString()',
+                            name: 'saldo'
+                        },
+                    ]
+                });
+
             });
         });
     </script>
-@endpush --}}
+@endpush

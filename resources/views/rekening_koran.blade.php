@@ -14,6 +14,7 @@
                     <th>tipe</th>
                     <th>jenis</th>
                     <th>kode</th>
+                    <th>sub</th>
                     <th>debet</th>
                     <th>kredit</th>
                     <th>aksi</th>
@@ -68,6 +69,10 @@
                                     <label for="tipe" class="form-label">Tipe</label>
                                     <input type="text" name="tipe" class="form-control" id="tipe" value="">
                                 </div>
+                                <div class="mb-3">
+                                    <label for="jenis" class="form-label">Jenis</label>
+                                    <input type="text" name="jenis" class="form-control" id="jenis" value="">
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -75,13 +80,24 @@
                                 <div class="mb-3" id="errorList"></div>
                                 <input type="hidden" name="id" id="id" value="">
                                 <div class="mb-3">
-                                    <label for="jenis" class="form-label">Jenis</label>
-                                    <input type="text" name="jenis" class="form-control" id="jenis" value="">
+                                    <label for="kode_transaksi" class="form-label">Kode Transaksi</label>
+                                    <input type="text" name="kode_transaksi" class="form-control" id="kode_transaksi"
+                                        value="">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="kode" class="form-label">Kode</label>
-                                    <input type="text" name="kode" class="form-control" id="kode"
+                                    <label for="nama_transaksi" class="form-label">Nama Transaksi</label>
+                                    <input type="text" name="nama_transaksi" class="form-control" id="nama_transaksi"
                                         value="">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="kode_sub_transaksi" class="form-label">Kode Sub Transaksi</label>
+                                    <input type="text" name="kode_sub_transaksi" class="form-control"
+                                        id="kode_sub_transaksi" value="">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nama_sub_transaksi" class="form-label">Nama Sub Transaksi</label>
+                                    <input type="text" name="nama_sub_transaksi" class="form-control"
+                                        id="nama_sub_transaksi" value="">
                                 </div>
                                 <div class="mb-3">
                                     <label for="debet" class="form-label">Debet</label>
@@ -105,7 +121,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                             id="btnTutup">Tutup</button>
@@ -159,8 +174,12 @@
                             name: 'jenis'
                         },
                         {
-                            data: 'kode',
-                            name: 'kode'
+                            data: 'kode_transaksi',
+                            name: 'kode_transaksi'
+                        },
+                        {
+                            data: 'kode_sub_transaksi',
+                            name: 'kode_sub_transaksi'
                         },
                         {
                             data: 'debet.toLocaleString()',
@@ -191,7 +210,10 @@
                         $('#tahun').val(data.tahun);
                         $('#tipe').val(data.tipe);
                         $('#jenis').val(data.jenis);
-                        $('#kode').val(data.kode);
+                        $('#kode_transaksi').val(data.kode_transaksi);
+                        $('#nama_transaksi').val(data.nama_transaksi);
+                        $('#kode_sub_transaksi').val(data.kode_sub_transaksi);
+                        $('#nama_sub_transaksi').val(data.nama_sub_transaksi);
                         $('#debet').val(data.debet.toLocaleString());
                         $('#kredit').val(data.kredit.toLocaleString());
                         $('#keterangan').val(data.keterangan);

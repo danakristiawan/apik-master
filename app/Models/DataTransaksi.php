@@ -13,9 +13,9 @@ class DataTransaksi extends Model
     public function scopeRekeningKoran()
     {
         return $this->where([
-            'kode_satker' => auth()->user()->kode_satker,
-            'status' => '1',
-        ]);
+                'kode_satker' => auth()->user()->kode_satker,
+                'status' => '1',
+            ]);
     }
     public function scopeJurnal()
     {

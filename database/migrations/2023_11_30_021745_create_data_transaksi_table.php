@@ -20,8 +20,11 @@ return new class extends Migration
             $table->string('bulan', 2);
             $table->string('tahun', 4);
             $table->string('tipe', 1);
-            $table->string('jenis', 64);
-            $table->string('kode', 2);
+            $table->string('jenis', 1);
+            $table->string('kode_transaksi', 2);
+            $table->string('nama_transaksi', 64);
+            $table->string('kode_sub_transaksi', 1);
+            $table->string('nama_sub_transaksi', 64);
             $table->decimal('debet', 15, 2);
             $table->decimal('kredit', 15, 2);
             $table->string('keterangan', 255);

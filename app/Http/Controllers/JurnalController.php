@@ -11,7 +11,7 @@ class JurnalController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = DataTransaksi::jurnal()->get();
+            $data = DataTransaksi::perStatus('2')->get();
             return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){

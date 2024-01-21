@@ -52,11 +52,11 @@
     </div>
     <div class="row mt-4">
         <div class="col-lg-6">
-            <h5 class="card-title mt-4">Tabel Lelang</h5>
+            <h4 class="card-title mt-4 pb-1">Lelang</h4>
             <div class="table-responsive">
-                <table class="table table-hover data-table-lelang">
+                <table class="table table-sm table-borderless table-hover data-table-lelang">
                     <thead>
-                        <tr>
+                        <tr class="table-secondary">
                             <th>Nama Transaksi</th>
                             <th>Debet</th>
                             <th>Kredit</th>
@@ -65,15 +65,23 @@
                     </thead>
                     <tbody>
                     </tbody>
+                    <thead>
+                        <tr class="table-secondary">
+                            <th>Jumlah</th>
+                            <th class="text-end">{{ number_format($sumLelang->debet, 0, '.', ',') }}</th>
+                            <th class="text-end">{{ number_format($sumLelang->kredit, 0, '.', ',') }}</th>
+                            <th class="text-end">{{ number_format($sumLelang->saldo, 0, '.', ',') }}</th>
+                        </tr>
+                    </thead>
                 </table>
             </div>
         </div>
         <div class="col-lg-6">
-            <h5 class="card-title mt-4">Tabel Piutang</h5>
+            <h4 class="card-title mt-4 pb-1">Piutang</h4>
             <div class="table-responsive">
-                <table class="table table-hover data-table-piutang">
+                <table class="table table-sm table-hover data-table-piutang">
                     <thead>
-                        <tr>
+                        <tr class="table-secondary">
                             <th>Nama Transaksi</th>
                             <th>Debet</th>
                             <th>Kredit</th>
@@ -82,6 +90,14 @@
                     </thead>
                     <tbody>
                     </tbody>
+                    <thead>
+                        <tr class="table-secondary">
+                            <th>Jumlah</th>
+                            <th class="text-end">{{ number_format($sumPiutang->debet, 0, '.', ',') }}</th>
+                            <th class="text-end">{{ number_format($sumPiutang->kredit, 0, '.', ',') }}</th>
+                            <th class="text-end">{{ number_format($sumPiutang->saldo, 0, '.', ',') }}</th>
+                        </tr>
+                    </thead>
                 </table>
             </div>
         </div>
@@ -161,22 +177,25 @@
                     paging: false,
                     searching: false,
                     info: false,
-                    ajax: "{{ route('overview.lelangtable') }}",
+                    ajax: "{{ route('overview.detailperjenis', 'L') }}",
                     columns: [{
                             data: 'nama_transaksi',
                             name: 'nama_transaksi'
                         },
                         {
                             data: 'debet.toLocaleString()',
-                            name: 'debet'
+                            name: 'debet',
+                            className: 'text-end'
                         },
                         {
                             data: 'kredit.toLocaleString()',
-                            name: 'kredit'
+                            name: 'kredit',
+                            className: 'text-end'
                         },
                         {
                             data: 'saldo.toLocaleString()',
-                            name: 'saldo'
+                            name: 'saldo',
+                            className: 'text-end'
                         },
                     ]
                 });
@@ -187,22 +206,25 @@
                     paging: false,
                     searching: false,
                     info: false,
-                    ajax: "{{ route('overview.piutangtable') }}",
+                    ajax: "{{ route('overview.detailperjenis', 'P') }}",
                     columns: [{
                             data: 'nama_transaksi',
                             name: 'nama_transaksi'
                         },
                         {
                             data: 'debet.toLocaleString()',
-                            name: 'debet'
+                            name: 'debet',
+                            className: 'text-end'
                         },
                         {
                             data: 'kredit.toLocaleString()',
-                            name: 'kredit'
+                            name: 'kredit',
+                            className: 'text-end'
                         },
                         {
                             data: 'saldo.toLocaleString()',
-                            name: 'saldo'
+                            name: 'saldo',
+                            className: 'text-end'
                         },
                     ]
                 });

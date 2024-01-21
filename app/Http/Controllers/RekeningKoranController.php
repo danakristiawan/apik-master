@@ -11,7 +11,7 @@ class RekeningKoranController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = DataTransaksi::rekeningKoran()->get();
+            $data = DataTransaksi::perStatus('1')->get();
             return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){

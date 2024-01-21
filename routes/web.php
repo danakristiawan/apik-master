@@ -41,8 +41,7 @@ Route::middleware('can:operator')->group(function () {
         Route::get('overview', 'index')->name('overview.index');
         Route::get('barchart', 'barChart')->name('overview.barchart');
         Route::get('piechart', 'pieChart')->name('overview.piechart');
-        Route::get('lelangtable', 'lelangTable')->name('overview.lelangtable');
-        Route::get('piutangtable', 'piutangTable')->name('overview.piutangtable');
+        Route::get('detail-per-jenis/{jenis}', 'detailPerJenis')->name('overview.detailperjenis');
     });
     Route::resource('rekening-koran', App\Http\Controllers\RekeningKoranController::class);
     Route::resource('jurnal', App\Http\Controllers\JurnalController::class);
@@ -62,5 +61,12 @@ Route::middleware('can:manager')->group(function () {
     Route::resource('ref-bank', App\Http\Controllers\RefBankController::class);
     Route::resource('ref-menu', App\Http\Controllers\RefMenuController::class);
     Route::resource('user', App\Http\Controllers\UserController::class);
-
+    Route::controller(App\Http\Controllers\BniController::class)->group(function () {
+        Route::get('bni', 'index')->name('bni.index');
+        Route::get('bni/{bni}', 'proses')->name('bni.proses');
+    });
+    Route::controller(App\Http\Controllers\MandiriController::class)->group(function () {
+        Route::get('mandiri', 'index')->name('mandiri.index');
+        Route::get('mandiri/{mandiri}', 'proses')->name('mandiri.proses');
+    });
 });

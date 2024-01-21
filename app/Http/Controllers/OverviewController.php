@@ -10,63 +10,31 @@ class OverviewController extends Controller
 {
     public function index()
     {
-        // $data = DataTransaksi::get();
         return view('overview', [
-            'rekeningKoran' => DataTransaksi::rekeningKoran()->count(),
-            'jurnal' => DataTransaksi::jurnal()->count(),
-            'pembukuan' => DataTransaksi::pembukuan()->count(),
-            'pelaporan' => DataTransaksi::pelaporan()->count()
+            'rekeningKoran' => DataTransaksi::perStatus('1')->count(),
+            'jurnal' => DataTransaksi::perStatus('2')->count(),
+            'pembukuan' => DataTransaksi::perStatus('3')->count(),
+            'pelaporan' => DataTransaksi::perStatus('4')->count(),
+            'sumLelang' => DataTransaksi::sumPerJenis('L'),
+            'sumPiutang' => DataTransaksi::sumPerJenis('P'),
         ]);
     }
 
     public function barChart() {
-        $items = DB::table('data_transaksi')
-                    ->select(DB::raw('count(*) as jumlah, bulan'))
-                    ->where('kode_satker', auth()->user()->kode_satker)
-                    ->groupBy('bulan')
-                    ->get();
-
         return response()->json([
-            'data' => $items
+            'data' => DataTransaksi::barChart(),
         ]);
     }
 
     public function pieChart() {
-        $items = DB::table('data_transaksi')
-                    ->select(DB::raw('count(*) as jumlah, jenis'))
-                    ->where('kode_satker', auth()->user()->kode_satker)
-                    ->groupBy('jenis')
-                    ->get();
-
         return response()->json([
-            'data' => $items
+            'data' => DataTransaksi::pieChart(),
         ]);
     }
 
-    public function lelangTable()
+    public function detailPerJenis($jenis = null)
     {
-        $items = DB::table('data_transaksi')
-                    ->select(DB::raw('sum(debet) as debet, sum(kredit) as kredit, sum(debet-kredit) as saldo, nama_transaksi'))
-                    ->where('kode_satker', auth()->user()->kode_satker)
-                    ->where('jenis', 'L')
-                    ->groupBy('nama_transaksi')
-                    ->get();
-
-        return DataTables::of($items)
-            ->addIndexColumn()
-            ->make(true);
-    }
-
-    public function piutangTable()
-    {
-        $items = DB::table('data_transaksi')
-                    ->select(DB::raw('sum(debet) as debet, sum(kredit) as kredit, sum(debet-kredit) as saldo, nama_transaksi'))
-                    ->where('kode_satker', auth()->user()->kode_satker)
-                    ->where('jenis', 'P')
-                    ->groupBy('nama_transaksi')
-                    ->get();
-
-        return DataTables::of($items)
+        return DataTables::of(DataTransaksi::detailPerJenis($jenis))
             ->addIndexColumn()
             ->make(true);
     }

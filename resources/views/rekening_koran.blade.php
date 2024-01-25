@@ -9,14 +9,11 @@
                 <tr>
                     <th>no</th>
                     <th>tanggal</th>
-                    <th>bulan</th>
-                    <th>tahun</th>
-                    <th>tipe</th>
                     <th>jenis</th>
-                    <th>kode</th>
-                    <th>sub</th>
+                    <th>tipe</th>
                     <th>debet</th>
                     <th>kredit</th>
+                    <th>keterangan</th>
                     <th>aksi</th>
                 </tr>
             </thead>
@@ -154,32 +151,16 @@
                             }
                         },
                         {
-                            data: 'tanggal',
-                            name: 'tanggal'
-                        },
-                        {
-                            data: 'bulan',
-                            name: 'bulan'
-                        },
-                        {
-                            data: 'tahun',
-                            name: 'tahun'
-                        },
-                        {
-                            data: 'tipe',
-                            name: 'tipe'
+                            data: 'tgl_lengkap',
+                            name: 'tgl_lengkap'
                         },
                         {
                             data: 'jenis',
                             name: 'jenis'
                         },
                         {
-                            data: 'kode_transaksi',
-                            name: 'kode_transaksi'
-                        },
-                        {
-                            data: 'kode_sub_transaksi',
-                            name: 'kode_sub_transaksi'
+                            data: 'tipe',
+                            name: 'tipe'
                         },
                         {
                             data: 'debet.toLocaleString()',
@@ -188,6 +169,10 @@
                         {
                             data: 'kredit.toLocaleString()',
                             name: 'kredit'
+                        },
+                        {
+                            data: 'keterangan',
+                            name: 'keterangan'
                         },
                         {
                             data: 'action',

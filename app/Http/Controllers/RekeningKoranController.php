@@ -17,7 +17,7 @@ class RekeningKoranController extends Controller
                     ->addColumn('action', function($row){
                         $detail = '<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#myModal" data-id="'.$row->id.'" class="btn btn-primary btn-sm" id="detail">Detail</a>';
                         $proses = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn btn-primary btn-sm ms-1" id="proses">proses</a>';
-                        $button = $detail.$proses;
+                        $button = $proses;
                         return $button;
                     })
                     ->rawColumns(['action'])

@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use DataTables;
-use App\Models\RefBank;
 use Illuminate\Http\Request;
+use App\Models\RefKodeTransaksi;
 
-class RefBankController extends Controller
+class RefKodeTransaksiController extends Controller
 {
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = RefBank::latest()->get();
+            $data = RefKodeTransaksi::latest()->get();
             return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
@@ -24,34 +24,34 @@ class RefBankController extends Controller
                     ->rawColumns(['action'])
                     ->make(true);
         }
-        return view('ref_bank');
+        return view('ref_kode_transaksi');
     }
 
     public function store(Request $request)
     {
         $request->validate($this->validation());
-        RefBank::create($request->all());
+        RefKodeTransaksi::create($request->all());
         return response()->json(['success' => 'Data has been created successfully!']);
     }
 
     public function show($id)
     {
-        $refBank = RefBank::findOrFail($id);
-        return response()->json($refBank);
+        $refKodeTransaksi = RefKodeTransaksi::findOrFail($id);
+        return response()->json($refKodeTransaksi);
     }
 
     public function update(Request $request, $id)
     {
         $request->validate($this->validation());
-        $refBank = RefBank::findOrFail($id);
-        $refBank->fill($request->post())->save();
+        $refKodeTransaksi = RefKodeTransaksi::findOrFail($id);
+        $refKodeTransaksi->fill($request->post())->save();
         return response()->json(['success' => 'Data has been updated successfully!']);
     }
 
     public function destroy($id)
     {
-        $refBank = RefBank::findOrFail($id);
-        $refBank->delete();
+        $refKodeTransaksi = RefKodeTransaksi::findOrFail($id);
+        $refKodeTransaksi->delete();
 
         return response()->json(['success' => 'Data has been deleted successfully!']);
     }
@@ -59,15 +59,8 @@ class RefBankController extends Controller
     public function validation()
     {
         return [
-            'kode_satker' => 'required',
-            'nomor_rekening' => 'required',
-            'uraian_rekening' => 'required',
-            'jenis_rekening' => 'required',
-            'nama_jenis_rekening' => 'required',
-            'nama_bank' => 'required',
-            'surat_izin' => 'required',
-            'tanggal_surat' => 'required',
-            'status_rekening' => 'required',
+            'kode_transaksi' => 'required',
+            'nama_transaksi' => 'required',
         ];
     }
 }

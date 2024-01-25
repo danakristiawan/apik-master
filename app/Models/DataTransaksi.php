@@ -13,10 +13,15 @@ class DataTransaksi extends Model
 
     public function scopePerStatus($query, $status = null)
     {
-        return $query = $this->where([
-                'kode_satker' => auth()->user()->kode_satker,
-                'status' => $status,
-            ]);
+        // return $query = $this->where([
+        //         'kode_satker' => auth()->user()->kode_satker,
+        //         'status' => $status,
+        //     ]);
+
+        return DB::table('data_transaksi')
+                ->select(DB::raw('*, (tanggal||"-"||bulan||"-20"||tahun) as tgl_lengkap'))
+                ->where('kode_satker', auth()->user()->kode_satker)
+                ->where('status', $status);
     }
 
     public function scopeBarChart()
@@ -50,7 +55,7 @@ class DataTransaksi extends Model
     public function scopeSumPerJenis($query, $jenis = null)
     {
         return $query = DB::table('data_transaksi')
-                ->select(DB::raw('sum(debet) as debet, sum(kredit) as kredit, sum(debet-kredit) as saldo, kode_satker'))
+                ->select(DB::raw('coalesce(sum(debet),0) as debet, coalesce(sum(kredit),0) as kredit, coalesce(sum(debet-kredit),0) as saldo, kode_satker'))
                 ->where('kode_satker', auth()->user()->kode_satker)
                 ->where('jenis', $jenis)
                 ->groupBy('kode_satker')

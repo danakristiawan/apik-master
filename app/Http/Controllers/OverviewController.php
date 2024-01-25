@@ -10,6 +10,7 @@ class OverviewController extends Controller
 {
     public function index()
     {
+
         return view('overview', [
             'rekeningKoran' => DataTransaksi::perStatus('1')->count(),
             'jurnal' => DataTransaksi::perStatus('2')->count(),

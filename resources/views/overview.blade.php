@@ -68,9 +68,12 @@
                     <thead>
                         <tr class="table-secondary">
                             <th>Jumlah</th>
-                            <th class="text-end">{{ number_format($sumLelang->debet, 0, '.', ',') }}</th>
-                            <th class="text-end">{{ number_format($sumLelang->kredit, 0, '.', ',') }}</th>
-                            <th class="text-end">{{ number_format($sumLelang->saldo, 0, '.', ',') }}</th>
+                            <th class="text-end">
+                                {{ isset($sumLelang->debet) ? number_format($sumLelang->debet, 0, '.', ',') : 0 }}</th>
+                            <th class="text-end">
+                                {{ isset($sumLelang->kredit) ? number_format($sumLelang->kredit, 0, '.', ',') : 0 }}</th>
+                            <th class="text-end">
+                                {{ isset($sumLelang->saldo) ? number_format($sumLelang->saldo, 0, '.', ',') : 0 }}</th>
                         </tr>
                     </thead>
                 </table>
@@ -93,9 +96,12 @@
                     <thead>
                         <tr class="table-secondary">
                             <th>Jumlah</th>
-                            <th class="text-end">{{ number_format($sumPiutang->debet, 0, '.', ',') }}</th>
-                            <th class="text-end">{{ number_format($sumPiutang->kredit, 0, '.', ',') }}</th>
-                            <th class="text-end">{{ number_format($sumPiutang->saldo, 0, '.', ',') }}</th>
+                            <th class="text-end">
+                                {{ isset($sumPiutang->debet) ? number_format($sumPiutang->debet, 0, '.', ',') : 0 }}</th>
+                            <th class="text-end">
+                                {{ isset($sumPiutang->kredit) ? number_format($sumPiutang->kredit, 0, '.', ',') : 0 }}</th>
+                            <th class="text-end">
+                                {{ isset($sumPiutang->saldo) ? number_format($sumPiutang->saldo, 0, '.', ',') : 0 }}</th>
                         </tr>
                     </thead>
                 </table>

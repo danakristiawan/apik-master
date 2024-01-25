@@ -34,6 +34,17 @@
                         <td>Satker</td>
                         <td><a href="{{ route('ref-satker.index') }}" class="btn btn-sm btn-primary">pilih</a></td>
                     </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Kode Transaksi</td>
+                        <td><a href="{{ route('ref-kode-transaksi.index') }}" class="btn btn-sm btn-primary">pilih</a></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Kode Sub Transaksi</td>
+                        <td><a href="{{ route('ref-kode-sub-transaksi.index') }}" class="btn btn-sm btn-primary">pilih</a>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

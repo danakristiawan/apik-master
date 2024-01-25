@@ -16,13 +16,23 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Tarik Data BNI</td>
-                        <td><a href="" class="btn btn-sm btn-primary">pilih</a></td>
+                        <td>Tarik Data Lelang BNI</td>
+                        <td><a href="{{ route('bni.lelang') }}" class="btn btn-sm btn-primary">pilih</a></td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Tarik Data Mandiri</td>
-                        <td><a href="" class="btn btn-sm btn-primary">pilih</a></td>
+                        <td>Tarik Data Piutang BNI</td>
+                        <td><a href="{{ route('bni.piutang') }}" class="btn btn-sm btn-primary">pilih</a></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Tarik Data Lelang Bank Mandiri</td>
+                        <td><a href="{{ route('mandiri.lelang') }}" class="btn btn-sm btn-primary">pilih</a></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Tarik Data Piutang Bank Mandiri</td>
+                        <td><a href="{{ route('mandiri.piutang') }}" class="btn btn-sm btn-primary">pilih</a></td>
                     </tr>
                 </tbody>
             </table>

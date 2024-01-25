@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('kode_satker', 6);
             $table->string('nomor_rekening', 32);
             $table->string('uraian_rekening', 128);
-            $table->string('jenis_rekening', 16);
+            $table->string('jenis_rekening', 1);
+            $table->string('nama_jenis_rekening', 16);
             $table->string('nama_bank', 16);
             $table->string('surat_izin', 64);
             $table->string('tanggal_surat', 32);

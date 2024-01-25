@@ -61,12 +61,16 @@ Route::middleware('can:manager')->group(function () {
     Route::resource('ref-bank', App\Http\Controllers\RefBankController::class);
     Route::resource('ref-menu', App\Http\Controllers\RefMenuController::class);
     Route::resource('user', App\Http\Controllers\UserController::class);
+    Route::resource('ref-kode-transaksi', App\Http\Controllers\RefKodeTransaksiController::class);
+    Route::resource('ref-kode-sub-transaksi', App\Http\Controllers\RefKodeSubTransaksiController::class);
     Route::controller(App\Http\Controllers\BniController::class)->group(function () {
-        Route::get('bni', 'index')->name('bni.index');
+        Route::get('bni/lelang', 'lelang')->name('bni.lelang');
+        Route::get('bni/piutang', 'piutang')->name('bni.piutang');
         Route::get('bni/{bni}', 'proses')->name('bni.proses');
     });
     Route::controller(App\Http\Controllers\MandiriController::class)->group(function () {
-        Route::get('mandiri', 'index')->name('mandiri.index');
+        Route::get('mandiri/lelang', 'lelang')->name('mandiri.lelang');
+        Route::get('mandiri/piutang', 'piutang')->name('mandiri.piutang');
         Route::get('mandiri/{mandiri}', 'proses')->name('mandiri.proses');
     });
 });

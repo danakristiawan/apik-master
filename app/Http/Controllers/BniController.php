@@ -6,18 +6,19 @@ use stdClass;
 use DataTables;
 use App\Models\RefBank;
 use Illuminate\Http\Request;
+use App\Models\DataTransaksi;
 use Illuminate\Support\Facades\Storage;
 
 class BniController extends Controller
 {
-    public function index(Request $request)
+    public function lelang(Request $request)
     {
         if ($request->ajax()) {
             $files =  json_decode(Storage::disk('public')->get('responseBni.json'), false);
             $arr = collect();
-            $nomor_rekening_lelang = RefBank::lelangPerSatker()->first()->nomor_rekening;
+            $nomor_rekening = RefBank::perSatker('1')->first() ? RefBank::perSatker('1')->first()->nomor_rekening : '';
             foreach ($files as $file) {
-                if (substr($file, 0, 1) !== 'S' and substr($file, 27, 10) == $nomor_rekening_lelang) {
+                if (substr($file, 0, 1) !== 'S' and substr($file, 27, 10) == $nomor_rekening) {
                     $object = new stdClass();
                     $object = [
                         'no' => substr($file,27,10),
@@ -32,14 +33,47 @@ class BniController extends Controller
             return DataTables::of($arr)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
-                        $proses = '<a href='.route('bni.index').'/'.$row->file.' class="btn btn-primary btn-sm">Proses</a>';
+                        $proses = '<a href='.route('bni.proses', ''.$row->file.'').' class="btn btn-primary btn-sm">Proses</a>';
                         $button = $proses;
                         return $button;
                     })
                     ->rawColumns(['action'])
                     ->make(true);
         }
-        return view('bni');
+        return view('bni_lelang');
+
+    }
+
+    public function piutang(Request $request)
+    {
+        if ($request->ajax()) {
+            $files =  json_decode(Storage::disk('public')->get('responseBni.json'), false);
+            $arr = collect();
+            $nomor_rekening = RefBank::perSatker('2')->first() ? RefBank::perSatker('2')->first()->nomor_rekening : '';
+            foreach ($files as $file) {
+                if (substr($file, 0, 1) !== 'S' and substr($file, 27, 10) == $nomor_rekening) {
+                    $object = new stdClass();
+                    $object = [
+                        'no' => substr($file,27,10),
+                        'tgl' => substr($file,0,8),
+                        'file' => $file,
+                    ];
+                    $arr->push($object);
+                }
+            }
+            $arr = json_decode($arr, false);
+
+            return DataTables::of($arr)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+                        $proses = '<a href='.route('bni.proses', ''.$row->file.'').' class="btn btn-primary btn-sm">Proses</a>';
+                        $button = $proses;
+                        return $button;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+        return view('bni_piutang');
 
     }
 
@@ -88,16 +122,23 @@ class BniController extends Controller
         }
 
         foreach ($cols as $col) {
-            RekeningKoran::create([
+            DataTransaksi::create([
                 'kode_satker' => auth()->user()->kode_satker,
                 'nomor_rekening' => $col[0],
                 'nama_bank' => 'BNI',
                 'tanggal' => substr($col[1],4,2),
                 'bulan' => substr($col[1],2,2),
                 'tahun' => substr($col[1],0,2),
-                'tipe' => $col[2],
-                'nominal' =>$col[3],
+                'tipe' => substr($col[2],0,1) == 'C' ? 'D' : 'K',
+                'jenis' => 'L',
+                'kode_transaksi' => '',
+                'nama_transaksi' => '',
+                'kode_sub_transaksi' => '',
+                'nama_sub_transaksi' => '',
+                'debet' =>substr($col[2],0,1) == 'C' ? $col[3] : 0,
+                'kredit' =>substr($col[2],0,1) == 'C' ? 0 : $col[3],
                 'keterangan' => $col[4],
+                'status' => '1',
             ]);
         }
 

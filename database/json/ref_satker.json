@@ -1,0 +1,454 @@
+{
+    "RECORDS": [
+        {
+            "id": "1",
+            "kode": "411792",
+            "nama": "Kantor Pusat DJKN"
+        },
+        {
+            "id": "2",
+            "kode": "506050",
+            "nama": "Kantor Wilayah DJKN Aceh"
+        },
+        {
+            "id": "3",
+            "kode": "537827",
+            "nama": "KPKNL Banda Aceh"
+        },
+        {
+            "id": "4",
+            "kode": "506069",
+            "nama": "KPKNL Lhokseumawe"
+        },
+        {
+            "id": "5",
+            "kode": "411806",
+            "nama": "Kanwil DJKN Sumatera Utara"
+        },
+        {
+            "id": "6",
+            "kode": "537831",
+            "nama": "KPKNL Medan"
+        },
+        {
+            "id": "7",
+            "kode": "119703",
+            "nama": "KPKNL Pematang Siantar"
+        },
+        {
+            "id": "8",
+            "kode": "506081",
+            "nama": "KPKNL Kisaran"
+        },
+        {
+            "id": "9",
+            "kode": "506090",
+            "nama": "KPKNL Padang Sidimpuan"
+        },
+        {
+            "id": "10",
+            "kode": "506101",
+            "nama": "Kanwil DJKN Riau, Sumatera Barat, dan Kepulauan Riau"
+        },
+        {
+            "id": "11",
+            "kode": "537848",
+            "nama": "KPKNL Padang"
+        },
+        {
+            "id": "12",
+            "kode": "119745",
+            "nama": "KPKNL Bukittinggi"
+        },
+        {
+            "id": "13",
+            "kode": "537852",
+            "nama": "KPKNL Pekanbaru"
+        },
+        {
+            "id": "14",
+            "kode": "119656",
+            "nama": "KPKNL Batam"
+        },
+        {
+            "id": "15",
+            "kode": "506461",
+            "nama": "KPKNL Dumai"
+        },
+        {
+            "id": "16",
+            "kode": "537880",
+            "nama": "Kanwil DJKN Sumatera Selatan, Jambi, dan Bangka Belitung"
+        },
+        {
+            "id": "17",
+            "kode": "537873",
+            "nama": "KPKNL Jambi"
+        },
+        {
+            "id": "18",
+            "kode": "537894",
+            "nama": "KPKNL Palembang"
+        },
+        {
+            "id": "19",
+            "kode": "506126",
+            "nama": "KPKNL Lahat"
+        },
+        {
+            "id": "20",
+            "kode": "119809",
+            "nama": "KPKNL Pangkal Pinang"
+        },
+        {
+            "id": "21",
+            "kode": "506142",
+            "nama": "Kanwil DJKN Lampung dan Bengkulu"
+        },
+        {
+            "id": "22",
+            "kode": "538154",
+            "nama": "KPKNL Bengkulu"
+        },
+        {
+            "id": "23",
+            "kode": "537902",
+            "nama": "KPKNL Bandar Lampung"
+        },
+        {
+            "id": "24",
+            "kode": "506157",
+            "nama": "KPKNL Metro"
+        },
+        {
+            "id": "25",
+            "kode": "506172",
+            "nama": "Kanwil DJKN Banten"
+        },
+        {
+            "id": "26",
+            "kode": "119724",
+            "nama": "KPKNL Serang"
+        },
+        {
+            "id": "27",
+            "kode": "506188",
+            "nama": "KPKNL Tangerang I"
+        },
+        {
+            "id": "28",
+            "kode": "506194",
+            "nama": "KPKNL Tangerang II"
+        },
+        {
+            "id": "29",
+            "kode": "411852",
+            "nama": "Kanwil DJKN DKI Jakarta"
+        },
+        {
+            "id": "30",
+            "kode": "537721",
+            "nama": "KPKNL Jakarta I"
+        },
+        {
+            "id": "31",
+            "kode": "604442",
+            "nama": "KPKNL Jakarta II"
+        },
+        {
+            "id": "32",
+            "kode": "537916",
+            "nama": "KPKNL Jakarta III"
+        },
+        {
+            "id": "33",
+            "kode": "537937",
+            "nama": "KPKNL Jakarta IV"
+        },
+        {
+            "id": "34",
+            "kode": "119312",
+            "nama": "KPKNL Jakarta V"
+        },
+        {
+            "id": "35",
+            "kode": "411812",
+            "nama": "Kanwil DJKN Jawa Barat"
+        },
+        {
+            "id": "36",
+            "kode": "537738",
+            "nama": "KPKNL Bandung"
+        },
+        {
+            "id": "37",
+            "kode": "604460",
+            "nama": "KPKNL Bekasi"
+        },
+        {
+            "id": "38",
+            "kode": "537759",
+            "nama": "KPKNL Bogor"
+        },
+        {
+            "id": "39",
+            "kode": "506208",
+            "nama": "KPKNL Purwakarta"
+        },
+        {
+            "id": "40",
+            "kode": "525343",
+            "nama": "KPKNL Tasikmalaya"
+        },
+        {
+            "id": "41",
+            "kode": "119393",
+            "nama": "KPKNL Cirebon"
+        },
+        {
+            "id": "42",
+            "kode": "411821",
+            "nama": "Kanwil DJKN Jawa Tengah dan D.I. Yogyakarta"
+        },
+        {
+            "id": "43",
+            "kode": "537763",
+            "nama": "KPKNL Semarang"
+        },
+        {
+            "id": "44",
+            "kode": "119511",
+            "nama": "KPKNL Surakarta"
+        },
+        {
+            "id": "45",
+            "kode": "506239",
+            "nama": "KPKNL Pekalongan"
+        },
+        {
+            "id": "46",
+            "kode": "411786",
+            "nama": "KPKNL Tegal"
+        },
+        {
+            "id": "47",
+            "kode": "537784",
+            "nama": "KPKNL Yogyakarta"
+        },
+        {
+            "id": "48",
+            "kode": "537770",
+            "nama": "KPKNL Purwokerto"
+        },
+        {
+            "id": "49",
+            "kode": "411837",
+            "nama": "Kanwil DJKN Jawa Timur"
+        },
+        {
+            "id": "50",
+            "kode": "537791",
+            "nama": "KPKNL Surabaya"
+        },
+        {
+            "id": "51",
+            "kode": "506276",
+            "nama": "KPKNL Sidoarjo"
+        },
+        {
+            "id": "52",
+            "kode": "537810",
+            "nama": "KPKNL Malang"
+        },
+        {
+            "id": "53",
+            "kode": "538140",
+            "nama": "KPKNL Jember"
+        },
+        {
+            "id": "54",
+            "kode": "506282",
+            "nama": "KPKNL Pamekasan"
+        },
+        {
+            "id": "55",
+            "kode": "537920",
+            "nama": "KPKNL Madiun"
+        },
+        {
+            "id": "56",
+            "kode": "506291",
+            "nama": "Kanwil DJKN Kalimantan Barat"
+        },
+        {
+            "id": "57",
+            "kode": "604456",
+            "nama": "KPKNL Pontianak"
+        },
+        {
+            "id": "58",
+            "kode": "506302",
+            "nama": "KPKNL Singkawang"
+        },
+        {
+            "id": "59",
+            "kode": "506327",
+            "nama": "Kanwil DJKN Kalimantan Selatan dan Tengah"
+        },
+        {
+            "id": "60",
+            "kode": "119834",
+            "nama": "KPKNL Palangka Raya"
+        },
+        {
+            "id": "61",
+            "kode": "506333",
+            "nama": "KPKNL Pangkalan Bun"
+        },
+        {
+            "id": "62",
+            "kode": "537958",
+            "nama": "KPKNL Banjarmasin"
+        },
+        {
+            "id": "63",
+            "kode": "506358",
+            "nama": "Kanwil DJKN Kalimantan Timur dan Utara"
+        },
+        {
+            "id": "64",
+            "kode": "537962",
+            "nama": "KPKNL Balikpapan"
+        },
+        {
+            "id": "65",
+            "kode": "537941",
+            "nama": "KPKNL Samarinda"
+        },
+        {
+            "id": "66",
+            "kode": "506364",
+            "nama": "KPKNL Tarakan"
+        },
+        {
+            "id": "67",
+            "kode": "506370",
+            "nama": "KPKNL Bontang"
+        },
+        {
+            "id": "68",
+            "kode": "538051",
+            "nama": "Kanwil DJKN Bali dan Nusa Tenggara"
+        },
+        {
+            "id": "69",
+            "kode": "538065",
+            "nama": "KPKNL Denpasar"
+        },
+        {
+            "id": "70",
+            "kode": "525591",
+            "nama": "KPKNL Singaraja"
+        },
+        {
+            "id": "71",
+            "kode": "538086",
+            "nama": "KPKNL Mataram"
+        },
+        {
+            "id": "72",
+            "kode": "538072",
+            "nama": "KPKNL Bima"
+        },
+        {
+            "id": "73",
+            "kode": "538108",
+            "nama": "KPKNL Kupang"
+        },
+        {
+            "id": "74",
+            "kode": "411843",
+            "nama": "Kanwil DJKN Sulawesi Selatan, Tenggara, dan Barat"
+        },
+        {
+            "id": "75",
+            "kode": "538019",
+            "nama": "KPKNL Makassar"
+        },
+        {
+            "id": "76",
+            "kode": "538190",
+            "nama": "KPKNL Pare-Pare"
+        },
+        {
+            "id": "77",
+            "kode": "119944",
+            "nama": "KPKNL Palopo"
+        },
+        {
+            "id": "78",
+            "kode": "538030",
+            "nama": "KPKNL Kendari"
+        },
+        {
+            "id": "79",
+            "kode": "418495",
+            "nama": "KPKNL Mamuju"
+        },
+        {
+            "id": "80",
+            "kode": "537979",
+            "nama": "Kanwil DJKN Sulawesi Utara, Tengah, Gorontalo, dan Maluku Utara"
+        },
+        {
+            "id": "81",
+            "kode": "538023",
+            "nama": "KPKNL Gorontalo"
+        },
+        {
+            "id": "82",
+            "kode": "538002",
+            "nama": "KPKNL Palu"
+        },
+        {
+            "id": "83",
+            "kode": "538133",
+            "nama": "KPKNL Ternate"
+        },
+        {
+            "id": "84",
+            "kode": "537983",
+            "nama": "KPKNL Manado"
+        },
+        {
+            "id": "85",
+            "kode": "506409",
+            "nama": "Kanwil DJKN Papua, Papua Barat, dan Maluku"
+        },
+        {
+            "id": "86",
+            "kode": "538129",
+            "nama": "KPKNL Jayapura"
+        },
+        {
+            "id": "87",
+            "kode": "537990",
+            "nama": "KPKNL Sorong"
+        },
+        {
+            "id": "88",
+            "kode": "525474",
+            "nama": "KPKNL Biak"
+        },
+        {
+            "id": "89",
+            "kode": "538044",
+            "nama": "KPKNL Ambon"
+        },
+        {
+            "id": "90",
+            "kode": "604445",
+            "nama": "Lembaga Manajemen Aset Negara"
+        }
+    ]
+}

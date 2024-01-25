@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Database\Seeders\RefSatkerSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -31,5 +32,7 @@ class DatabaseSeeder extends Seeder
             'menu_name' => 'Referensi User',
             'no_urut' => '99',
         ]);
+
+        $this->call(RefSatkerSeeder::class);
     }
 }
